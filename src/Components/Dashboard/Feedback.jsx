@@ -18,8 +18,8 @@ export default function Feedback({testimony, swipeTo, id, length}) {
                 <h1 className="font-bold text-2xl">Kata Beswan</h1>
                 <p className="mt-5 text-[17px]">{testimony.description}</p>
             </div>
-            <div className="text-left text-sm mt-5 flex items-center justify-between">
-                <div className="flex items-center">
+            <div className="text-left text-sm mt-5 flex md:items-center justify-between md:flex-row flex-col ">
+                <div className="flex items-center md:mb-0 mb-5">
                     <img src='https://images.unsplash.com/photo-1542909168-82c3e7fdca5c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80' alt='human' className="rounded-xl" style={{ width: '60px', height: '60px' }} />
                     <div className="ml-2">
                         <p>{testimony.nama}</p>

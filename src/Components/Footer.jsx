@@ -34,27 +34,31 @@ const socialMedias = [
     },
 ]
 
-export default function Footer(){
-    return(
+export default function Footer() {
+    return (
         <div className="bg-purple mt-40 p-10">
             <div className="w-[90%] mx-auto">
                 <h3 className="text-white font-bold mb-5 text-xl">Ikuti Kami!</h3>
                 <div className="bg-white p-2 flex items-center w-fit rounded-lg">
                     {
                         socialMedias.map((socialMedia, index) => {
-                            return(
+                            return (
                                 <Link to={socialMedia.url} key={index} className='mx-2'>
-                                    <img src={socialMedia.logo} alt='socmed' width={`${socialMedia.name === 'line' ? '30' : '40'}`}/>
+                                    <img src={socialMedia.logo} alt='socmed' width={`${socialMedia.name === 'line' ? '30' : '40'}`} />
                                 </Link>
                             );
                         })
                     }
                 </div>
             </div>
-            <hr className="w-[90%] mx-auto mt-10 bg-white border-white"/>
-            <div className="flex items-center w-[90%] mx-auto mt-2 text-white">
-                <p>Behind The Scene</p>
-                <p className="ml-4">What's on in KSE?</p>
+            <hr className="w-[90%] mx-auto mt-10 bg-white border-white md:mb-0 mb-5" />
+            <div className="flex sm:items-center sm:flex-row flex-col flex-wrap w-[90%] mx-auto mt-2 text-white">
+                <Link to='/' className="sm:mb-0 mb-3 hover:text-orange transition">
+                    <p className="mr-4">Behind The Scene</p>
+                </Link>
+                <Link to='/' className="hover:text-orange transition">
+                    <p>What's on in KSE?</p>
+                </Link>
             </div>
         </div>
     );

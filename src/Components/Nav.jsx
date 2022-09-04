@@ -1,5 +1,5 @@
 import KSELogo from '../assets/logo_kse.svg';
-import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom'
 import React from 'react';
 
 const navLink = [
@@ -37,13 +37,18 @@ export default function Nav() {
     return (
         <>
             <nav className={`bg-purple fixed top-0 h-[90px] w-full flex items-center justify-between px-[50px] md:px-[100px] text-white font-sans z-40  transition duration-300 ${isShadowed ? 'shadow-lg' : ''}`}>
-                <div>
-                    <img src={KSELogo} alt="logo kse" className='h-[70px]' />
-                </div>
+                <Link to='/'>
+                    <img src={KSELogo} alt="logo kse" className='h-[55px]' />
+                </Link>
                 <div className='list-none md:flex hidden'>
                     {
                         navLink.map((link, index) => {
-                            return <a href={link.link} key={index} className="mx-5 hover:text-orange transition"><li>{link.name}</li></a>
+                            return (
+                                <a href={link.link} key={index} className={`${window.location.pathname === link.link ? 'before:w-full' : ''} mx-5 py-2 font-sans text-white transition relative nav-link nav-link-ltr`}>
+                                    {link.name}
+                                    {/* <div className='bg-orange h-[2px] hover:w-full w-0'></div> */}
+                                </a>
+                            )
                         })
                     }
                 </div>
