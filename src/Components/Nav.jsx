@@ -74,7 +74,7 @@ export default function Nav() {
             {/* darken bg */}
             {
                 isOpen &&
-                <div className='md:hidden fixed z-30 bg-[#0000006f] left-0 top-0 w-full bottom-0 right-0'></div>
+                <div className='md:hidden fixed z-30 bg-[#0000006f] left-0 top-0 w-full bottom-0 right-0' onClick={() => setIsOpen(false)}></div>
             }
         </>
     );
