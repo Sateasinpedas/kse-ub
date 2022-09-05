@@ -36,7 +36,7 @@ const socialMedias = [
 
 export default function Footer() {
     return (
-        <div className="bg-purple mt-40 p-10">
+        <div className="bg-purple p-10">
             <div className="w-[90%] mx-auto">
                 <h3 className="text-white font-bold mb-5 text-xl">Ikuti Kami!</h3>
                 <div className="bg-white p-2 flex items-center w-fit rounded-lg">
