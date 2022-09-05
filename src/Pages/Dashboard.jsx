@@ -112,7 +112,7 @@ export default function Welcome() {
                         <h1 className="font-bold sm:text-3xl text-2xl mb-2">Apa Kata Para <br className="md:block hidden"/> Beswan KSE</h1>
                         <p className="md:mt-5 mt-2">Testimoni Beswan KSE UB</p>
                     </div>
-                    <div className="tentang md:w-[60%] w-[90%] mx-auto md:mt-0 mt-10">
+                    <div className="tentang md:w-[60%] w-[90%] mx-auto md:mt-0 mt-10 mb-40">
                         <Swiper className="mySwiper"
                             slidesPerView={1}
                             onInit={(e) => {
