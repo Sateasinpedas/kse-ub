@@ -56,7 +56,7 @@ export default function Footer() {
                 <a href='/bts#' className="sm:mb-0 mb-3 hover:text-orange transition">
                     <p className="mr-4">Behind The Scene</p>
                 </a>
-                <a href='/' className="hover:text-orange transition">
+                <a href='https://kse.or.id/home' className="hover:text-orange transition">
                     <p>What's on in KSE?</p>
                 </a>
             </div>
