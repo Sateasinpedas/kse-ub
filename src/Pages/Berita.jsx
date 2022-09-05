@@ -28,7 +28,7 @@ export default function Berita() {
                         </div>
                     </div>
                 </div>
-                <div className="flex flex-wrap justify-center w-[90%] mx-auto mt-20">
+                <div className="flex flex-wrap justify-center w-[90%] mx-auto mt-20 mb-20">
                     <CardBerita/>
                     <CardBerita/>
                     <CardBerita/>

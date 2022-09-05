@@ -53,12 +53,12 @@ export default function Footer() {
             </div>
             <hr className="w-[90%] mx-auto mt-10 bg-white border-white md:mb-0 mb-5" />
             <div className="flex sm:items-center sm:flex-row flex-col flex-wrap w-[90%] mx-auto mt-2 text-white">
-                <Link to='/' className="sm:mb-0 mb-3 hover:text-orange transition">
+                <a href='/bts#' className="sm:mb-0 mb-3 hover:text-orange transition">
                     <p className="mr-4">Behind The Scene</p>
-                </Link>
-                <Link to='/' className="hover:text-orange transition">
+                </a>
+                <a href='https://kse.or.id/home' className="hover:text-orange transition">
                     <p>What's on in KSE?</p>
-                </Link>
+                </a>
             </div>
         </div>
     );
