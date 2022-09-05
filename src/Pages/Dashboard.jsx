@@ -57,7 +57,7 @@ export default function Welcome() {
                         <button className="bg-orange shadow-lg p-2 rounded-lg font-medium px-5 py-2 text-xl  relative z-20 hover:bg-[#ff8519] text-white hover:boder-white transition hover:scale-105">Berita terkini</button>
                     </a>
                 </div>
-                <img src={JumbotronBg} alt='background' className="absolute left-0 top-32" />
+                <img src={JumbotronBg} alt='background' className="absolute left-0 top-32 bottom-0 right-0 w-full" />
             </div>
             <div className="news-card">
                 <div className="flex md:flex-row flex-col items-center md:w-[75%] w-[80%] justify-between mx-auto mt-20">

@@ -3,6 +3,8 @@ import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import Dashboard from './Pages/Dashboard';
 import Berita from './Pages/Berita';
 import ComingSoon from './Pages/ComingSoon';
+import Kontak from './Pages/Kontak';
+import BehindTheScene from './Pages/BehindTheScene';
 
 function App() {
   return (
@@ -12,8 +14,8 @@ function App() {
           <Route path='/' element={<Dashboard />} />
           <Route path='/berita' element={<Berita/>}/>
           <Route path='/berita/:name'  element={<ComingSoon/>} />
-          <Route path='/kontak'  element={<ComingSoon/>} />
-          <Route path='/bts' element={<ComingSoon/>}/>
+          <Route path='/kontak'  element={<Kontak/>} />
+          <Route path='/bts' element={<BehindTheScene/>}/>
           <Route path='/about' element={<ComingSoon/>}/>
           <Route path='/kabar-paguyuban'  element={<ComingSoon/>} />
         </Routes>
