@@ -8,6 +8,8 @@ import Kontak from './Pages/Kontak';
 import BehindTheScene from './Pages/BehindTheScene';
 import PrivateRoute from './routes/PrivateRoute';
 import AuthRoute from './routes/AuthRoute';
+import Login from './Pages/Admin/Login';
+import Register from './Pages/Admin/Register';
 
 function App() {
   return (
@@ -23,10 +25,14 @@ function App() {
           <Route path='/kabar-paguyuban'  element={<ComingSoon/>} />
           <Route element={<PrivateRoute/>} >
             <Route path='/admin/dashboard'  element={<AdminDashboard/>} />
+            <Route path='/admin/kabar-paguyuban'  />
+            <Route path='/admin/testimoni'  />
+            <Route path='/admin/faq'  />
+            <Route path='/admin/mitra'  />
           </Route>
           <Route element={<AuthRoute/>}>
-            <Route path='/admin/login'/>
-            <Route path='/admin/register'/>
+            <Route path='/admin/login' element={<Login/>}/>
+            <Route path='/admin/register' element={<Register/>}/>
           </Route>
         </Routes>
       </BrowserRouter>
