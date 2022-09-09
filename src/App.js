@@ -50,7 +50,6 @@ function App() {
           </Route>
           <Route element={<AuthRoute/>}>
             <Route path='/admin/login' element={<Login/>}/>
-            <Route path='/admin/register' element={<Register/>}/>
           </Route>
         </Routes>
       </BrowserRouter>
