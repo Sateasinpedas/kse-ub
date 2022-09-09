@@ -30,7 +30,7 @@ export default function CardMitra({ mitras }) {
 
 function Mitra({mitra}){
     return(
-        <div className="rounded-lg shadow flex flex-col items-center justify-center p-5 m-2 lg:w-[160px] w-full">
+        <div className="rounded-lg shadow flex flex-col items-center justify-center p-5 m-1 lg:w-[160px] w-full">
             <IKImage
             publickey={process.env.REACT_APP_PUBLIC_KEY}
             urlEndpoint={process.env.REACT_APP_IMAGEKIT_URL_ENDPOINT}

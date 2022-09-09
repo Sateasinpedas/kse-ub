@@ -49,7 +49,7 @@ export default function Dropdown({ setOpenDropdown }) {
         }
     ]
     return (
-        <motion.div exit={{ height: 0, opacity: 0 }} initial={{ height: 0, opacity: 0 }} animate={{ height: '100px', opacity: [0.5, 1] }} transition={{ duration: 0.1 }} className={`p-3 rounded-lg shadow-lg absolute bg-white right-0 top-14`}>
+        <motion.div exit={{ height: 0, opacity: 0 }} initial={{ height: 0, opacity: 0 }} animate={{ height: '100px', opacity: [0.5, 1] }} transition={{ duration: 0.1 }} className={`p-3 z-40 rounded-lg shadow-lg absolute bg-white right-0 top-14`}>
             {
                 lists.map((list, index) => {
                     return <DropdownLink setOpenDropdown={setOpenDropdown} list={list} key={index} />
