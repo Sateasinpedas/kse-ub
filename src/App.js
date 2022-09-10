@@ -15,6 +15,7 @@ import EditKabarPaguyubnan from './Pages/Admin/KabarPaguyuban/Edit';
 import AddFAQ from './Pages/Admin/FAQ/Add';
 import AddMitra from './Pages/Admin/Mitra/Add';
 import AddTestimony from './Pages/Admin/Testimoni/Add';
+import EditFAQ from './Pages/Admin/FAQ/Edit';
 
 function App() {
   return (
@@ -42,7 +43,7 @@ function App() {
             {/* faq */}
             <Route path='/admin/faq'  />
             <Route path='/admin/faq/add' element={<AddFAQ/>}/>
-            <Route path='/admin/faq/:title/edit'  />
+            <Route path='/admin/faq/:title/edit' element={<EditFAQ/>} />
             {/* mitra */}
             <Route path='/admin/mitra'  />
             <Route path='/admin/mitra/add'element={<AddMitra/>}/>
