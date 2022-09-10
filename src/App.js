@@ -16,6 +16,7 @@ import AddFAQ from './Pages/Admin/FAQ/Add';
 import AddMitra from './Pages/Admin/Mitra/Add';
 import AddTestimony from './Pages/Admin/Testimoni/Add';
 import EditFAQ from './Pages/Admin/FAQ/Edit';
+import EditMitra from './Pages/Admin/Mitra/Edit';
 
 function App() {
   return (
@@ -47,7 +48,7 @@ function App() {
             {/* mitra */}
             <Route path='/admin/mitra'  />
             <Route path='/admin/mitra/add'element={<AddMitra/>}/>
-            <Route path='/admin/mitra/:title/edit'  />
+            <Route path='/admin/mitra/:title/edit' element={<EditMitra />} />
           </Route>
           <Route element={<AuthRoute/>}>
             <Route path='/admin/login' element={<Login/>}/>
