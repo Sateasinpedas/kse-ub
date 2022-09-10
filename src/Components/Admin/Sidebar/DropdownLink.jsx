@@ -1,5 +1,6 @@
 import React from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { Link } from "react-router-dom";
 //32579619
 export default function DropdownLink({ route }) {
     const [open, setOpen] = React.useState(false);
@@ -47,9 +48,9 @@ export default function DropdownLink({ route }) {
 
 function LinkDropdown({ item, index }) {
     return (
-        <a href={item.link} className='m-3 flex items-center justify-start'>
+        <Link to={item.link} className='m-3 flex items-center justify-start'>
             {item.svg}
             <div className="ml-2 text-sm" key={index}>{item?.name}</div>
-        </a>
+        </Link>
     );
 }

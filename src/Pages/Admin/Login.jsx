@@ -3,6 +3,7 @@ import React from "react";
 import Button from "../../Components/Admin/Button/Button";
 import InputAdmin from "../../Components/Admin/Input/InputAdmin";
 import { app } from "../../firebase/firebase";
+import Swal from "sweetalert2";
 
 export default function Login() {
     const auth = getAuth(app);
@@ -25,8 +26,12 @@ export default function Login() {
                 }, 1000);
             })
             .catch((error) => {
-                console.log(error)
                 setIsLoading(false)
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: error.code,
+                });
             });
     }
 
@@ -70,7 +75,6 @@ export default function Login() {
                         <span class="sr-only">Loading...</span>
                     </div>
                 }</Button>
-                <div>Don't have account? <a href="/admin/register"><span className="text-purple">Create account</span></a></div>
             </form>
         </div>
     );

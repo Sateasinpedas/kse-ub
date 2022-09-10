@@ -1,8 +1,30 @@
-import { faqs } from "../../../utils/Admin/dummyData";
+import React from "react";
 import Button from "../Button/Button";
 import FAQDropdown from "../Dropdown/FAQDropdown";
+import { getDocs } from "firebase/firestore";
+import { faqRef } from "../../../firebase/firebase";
+import { checkUser } from "../../../firebase/request";
 
 export default function CardFAQ(){
+    const [faqs, setFaqs] = React.useState([]);
+
+    const getFaqData = () => {
+        getDocs(faqRef)
+        .then(snapshot => {
+            snapshot.docs.forEach(doc => {
+                setFaqs(prevState => [...prevState, {...doc.data(), id: doc.id}])
+            })
+            console.log(faqs);
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    }
+
+    React.useEffect(() => {
+        checkUser(getFaqData);
+    }, [])
+
     return(
         <div className="m-4 w-full rounded-xl p-8 bg-white flex items-start justify-between flex-col-reverse md:flex-row shadow my-2">
             <div className="content w-full md:mt-0 mt-5">
@@ -10,7 +32,7 @@ export default function CardFAQ(){
                 <p className="text-slate-500 mb-10">Welcome back, your dashboard is ready!</p>
                 <div className="mb-5">
                     {
-                        faqs.map((faq, index) => {
+                        faqs?.map((faq, index) => {
                             return <FAQDropdown faq={faq} key={index}/>
                         })
                     }
