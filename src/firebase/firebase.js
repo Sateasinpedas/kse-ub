@@ -19,5 +19,6 @@ const db = getFirestore();
  // column refs
  const faqRef = collection(db, "faqs");
  const mitraRef = collection(db, "mitras");
+ const testimoniRef = collection(db, "testimonies");
 
-export { app, analytics, db, faqRef, mitraRef };
+export { app, analytics, db, faqRef, mitraRef, testimoniRef };
