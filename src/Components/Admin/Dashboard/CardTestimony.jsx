@@ -3,11 +3,13 @@ import { IKImage } from "imagekitio-react";
 import React from "react";
 import { testimoniRef } from "../../../firebase/firebase";
 import Button from "../Button/Button";
+import SearchInput from "../SearchInput/SearchInput";
 import SkeletonLoader from "../SkeletonLoader/SkeletonLoader";
 
 export default function CardTestimony() {
     const [testimonies, setTestimonies] = React.useState([]);
     const [isLoading, setIsLoading] = React.useState(false);
+    const [searchValue, setSearchValue] = React.useState('');
 
     React.useEffect(() => {
         setIsLoading(true);
@@ -29,32 +31,41 @@ export default function CardTestimony() {
             <div className="content w-full md:mt-0 mt-5">
                 <h2 className="font-bold text-2xl mb-2 text-slate-600">Daftar Testimoni</h2>
                 <p className="text-slate-500 mb-10">Welcome back, your dashboard is ready!</p>
+                <div className="my-5">
+                    <SearchInput placeholder='Search testimoni' setSearchValue={setSearchValue} />
+                </div>
                 <div>
                     {
                         (testimonies.length === 0 && isLoading === false) && <p className="italic text-slate-700">Data FAQ tidak ditemukan</p>
                     }
                     {
-                        isLoading ? <SkeletonLoader preset='facebook'/>
-                        :
-                        testimonies.map((item, index) => {
-                            return (
-                                <div className="daftar-berita flex items-start" key={index}>
-                                    <div className="p-2 rounded-[50%] overflow-hidden h-12 w-12">
-                                        <IKImage
-                                            publickey={process.env.REACT_APP_IMAGEKIT_PUBLIC_KEY}
-                                            urlEndpoint={process.env.REACT_APP_IMAGEKIT_URL_ENDPOINT}
-                                            path={item?.image_link}
-                                        />
+                        isLoading ? <SkeletonLoader preset='facebook' />
+                            :
+                            testimonies.filter((item) => {
+                                if (searchValue === ''){
+                                    return item
+                                }
+                                else
+                                    return item.nama.toLowerCase().includes(searchValue.toLowerCase())
+                            }).map((item, index) => {
+                                return (
+                                    <div className="daftar-berita flex items-start" key={index}>
+                                        <div className="p-2 rounded-[50%] overflow-hidden h-12 w-12">
+                                            <IKImage
+                                                publickey={process.env.REACT_APP_IMAGEKIT_PUBLIC_KEY}
+                                                urlEndpoint={process.env.REACT_APP_IMAGEKIT_URL_ENDPOINT}
+                                                path={item?.image_link}
+                                            />
+                                        </div>
+                                        <div className="ml-2">
+                                            <a onClick={() => localStorage.setItem('testimoni', JSON.stringify(item))} href={`/admin/testimoni/${item.nama.replace("?", "")}/edit`}>
+                                                <h4 className="text-slate-600 font-semibold mb-2">{item.nama}</h4>
+                                            </a>
+                                            <p className="text-slate-500 text-sm mb-5">{item.description.substring(0, 150)}...</p>
+                                        </div>
                                     </div>
-                                    <div className="ml-2">
-                                        <a onClick={() => localStorage.setItem('testimoni', JSON.stringify(item))} href={`/admin/testimoni/${item.nama.replace("?", "")}/edit`}>
-                                            <h4 className="text-slate-600 font-semibold mb-2">{item.nama}</h4>
-                                        </a>
-                                        <p className="text-slate-500 text-sm mb-5">{item.description.substring(0, 150)}...</p>
-                                    </div>
-                                </div>
-                            );
-                        })
+                                );
+                            })
                     }
                 </div>
                 <Button href='/admin/testimoni/add' className='border outline-none text-sm hover:bg-purple hover:text-white' endIcon={
