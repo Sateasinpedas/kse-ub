@@ -48,7 +48,7 @@ export default function Add() {
 
     return (
         <AdminLayout openSidebar={openSidebar} setOpenSidebar={setOpenSidebar}>
-            <div className="pts-14 mb-5">
+            <div className="pt-14 mb-5">
                 <h1 className="font-bold text-2xl">Tambah FAQ</h1>
             </div>
             <div className="w-full">
