@@ -2,10 +2,11 @@ import React from "react";
 import AdminLayout from "../../../Layout/AdminLayout";
 import InputAdmin from "../../../Components/Admin/Input/InputAdmin";
 import Button from "../../../Components/Admin/Button/Button";
-import { deleteDoc, doc, updateDoc } from "firebase/firestore";
+import { doc, updateDoc } from "firebase/firestore";
 import { db } from "../../../firebase/firebase";
 import Swal from "sweetalert2";
 import { checkUser } from "../../../firebase/request";
+import { deleteItem } from "../../../utils/ConfirmationDialog";
 
 export default function Edit() {
     const [openSidebar, setOpenSidebar] = React.useState(false);
@@ -23,30 +24,19 @@ export default function Edit() {
 
     const deleteTestimoni = async () => {
         setIsLoadingDelete(true);
-        await deleteDoc(doc(db, "testimonies", testimoni.id))
-            .then(() => {
-                Swal.fire({
-                    position: 'top-end',
-                    icon: 'success',
-                    title: 'Success deleting Testimoni',
-                    showConfirmButton: false,
-                    timer: 2000
-                })
-                setTimeout(() => {
-                    setIsLoadingDelete(false);
-                    window.location.pathname = '/admin/dashboard';
-                }, 2000);
-            })
-            .catch((err) => {
+        Swal.fire({
+            title: 'Do you want to Delete the item?',
+            showDenyButton: true,
+            confirmButtonText: 'Delete',
+            denyButtonText: 'Cancel',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                deleteItem(setIsLoadingDelete, "testimonies", testimoni.id);
+            } else if (result.isDenied) {
                 setIsLoadingDelete(false);
-                Swal.fire({
-                    position: 'top-end',
-                    icon: 'error',
-                    title: err.code,
-                    showConfirmButton: false,
-                    timer: 2000
-                })
-            })
+                Swal.fire('Item not deleted', '', 'info')
+            }
+        })
     }
 
     const editTestimoni = async () => {
