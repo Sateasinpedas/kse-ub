@@ -17,6 +17,7 @@ import AddTestimony from './Pages/Admin/Testimoni/Add';
 import EditFAQ from './Pages/Admin/FAQ/Edit';
 import EditMitra from './Pages/Admin/Mitra/Edit';
 import EditTestimoni from './Pages/Admin/Testimoni/Edit';
+import ResetPassword from './Pages/Admin/ResetPassword/ResetPassword';
 
 function App() {
   return (
@@ -49,6 +50,8 @@ function App() {
             <Route path='/admin/mitra'  />
             <Route path='/admin/mitra/add'element={<AddMitra/>}/>
             <Route path='/admin/mitra/:title/edit' element={<EditMitra />} />
+            {/* reset password */}
+            <Route path='/admin/password-reset' element={<ResetPassword/>}/>
           </Route>
           <Route element={<AuthRoute/>}>
             <Route path='/admin/login' element={<Login/>}/>
