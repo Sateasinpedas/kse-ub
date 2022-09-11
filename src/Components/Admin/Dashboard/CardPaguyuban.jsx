@@ -1,14 +1,26 @@
+import React from "react";
 import Button from "../Button/Button";
+import SearchInput from "../SearchInput/SearchInput";
 
 export default function CardPaguyuban({ news }) {
+    const [searchValue, setSearchValue] = React.useState('');
+
     return (
         <div className="m-4 lg:w-[46%] w-full rounded-xl p-8 bg-white flex items-start justify-between flex-col-reverse md:flex-row shadow">
             <div className="content w-full md:mt-0 mt-5">
                 <h2 className="font-bold text-2xl mb-2 text-slate-600">Daftar Kabar Paguyuban</h2>
                 <p className="text-slate-500 mb-10">Welcome back, your dashboard is ready!</p>
+                <div className="my-5">
+                    <SearchInput placeholder='Search Kabar Paguyuban' setSearchValue={setSearchValue} />
+                </div>
                 <div>
                     {
-                        news.map((item, index) => {
+                        news.filter((berita) => {
+                            if (searchValue === '')
+                                return berita
+                            else
+                                return berita.title.toLowerCase().includes(searchValue.toLowerCase())
+                        }).map((item, index) => {
                             return (
                                 <div className="daftar-berita " key={index}>
                                     <a href={item.link}>

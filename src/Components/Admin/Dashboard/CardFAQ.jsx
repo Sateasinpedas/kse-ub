@@ -5,10 +5,12 @@ import { getDocs } from "firebase/firestore";
 import { faqRef } from "../../../firebase/firebase";
 import { checkUser } from "../../../firebase/request";
 import SkeletonLoader from "../SkeletonLoader/SkeletonLoader";
+import SearchInput from "../SearchInput/SearchInput";
 
 export default function CardFAQ() {
     const [faqs, setFaqs] = React.useState([]);
     const [isLoading, setIsLoading] = React.useState(false);
+    const [searchValue, setSearchValue] = React.useState('');
 
     const getFaqData = () => {
         setIsLoading(true);
@@ -35,13 +37,21 @@ export default function CardFAQ() {
                 <h2 className="font-bold text-2xl mb-2 text-slate-600">Daftar FAQ</h2>
                 <p className="text-slate-500 mb-10">Welcome back, your dashboard is ready!</p>
                 <div className="mb-5">
+                    <SearchInput placeholder='Search FAQ' setSearchValue={setSearchValue}/>
+                </div>
+                <div className="mb-5">
                     {
                         (faqs.length === 0 && isLoading === false) && <p className="italic text-slate-700">Data FAQ tidak ditemukan</p>
                     }
                     {
                         isLoading ? <SkeletonLoader preset='faq' />
                             :
-                            faqs?.map((faq, index) => {
+                            faqs?.filter((item) => {
+                                if(searchValue === '')
+                                    return item
+                                else
+                                    return item.title.toLowerCase().includes(searchValue.toLowerCase())
+                            }).map((faq, index) => {
                                 return <FAQDropdown faq={faq} key={index} />
                             })
                     }

@@ -3,11 +3,13 @@ import { IKImage } from "imagekitio-react";
 import React from "react";
 import { mitraRef } from "../../../firebase/firebase";
 import Button from "../Button/Button";
+import SearchInput from "../SearchInput/SearchInput";
 import SkeletonLoader from "../SkeletonLoader/SkeletonLoader";
 
 export default function CardMitra() {
     const [mitras, setMitras] = React.useState([]);
     const [isLoading, setIsLoading] = React.useState(false);
+    const [searchValue, setSearchvalue] = React.useState('');
 
     React.useEffect(() => {
         setIsLoading(true);
@@ -29,14 +31,21 @@ export default function CardMitra() {
             <div className="content w-full md:mt-0 mt-5">
                 <h2 className="font-bold text-2xl mb-2 text-slate-600">Daftar Mitra</h2>
                 <p className="text-slate-500 mb-10">Welcome back, your dashboard is ready!</p>
+                <div className="my-5">
+                    <SearchInput placeholder='Search mitra' setSearchValue={setSearchvalue} />
+                </div>
                 <div className=" flex lg:justify-between w-full flex-wrap mb-10">
                     {
                         (mitras.length === 0 && isLoading === false) && <p className="italic text-slate-700">Data Mitra tidak ditemukan</p>
                     }
                     {
-                        isLoading ? <SkeletonLoader preset='instagram'/>
+                        isLoading ? <SkeletonLoader preset='instagram' />
                             :
-                            mitras.map((item, index) => {
+                            mitras.filter((mitra) => {
+                                if (searchValue === '')
+                                    return mitra
+                                else return mitra.title.toLowerCase().includes(searchValue.toLowerCase())
+                            }).map((item, index) => {
                                 return (
                                     <div className="daftar-mitra lg:w-fit w-full" key={index}>
                                         <Mitra mitra={item} />
