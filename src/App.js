@@ -9,13 +9,14 @@ import BehindTheScene from './Pages/BehindTheScene';
 import PrivateRoute from './routes/PrivateRoute';
 import AuthRoute from './routes/AuthRoute';
 import Login from './Pages/Admin/Login';
-import Register from './Pages/Admin/Register';
 import AddKabarPaguyuban from './Pages/Admin/KabarPaguyuban/Add';
 import EditKabarPaguyubnan from './Pages/Admin/KabarPaguyuban/Edit';
 import AddFAQ from './Pages/Admin/FAQ/Add';
 import AddMitra from './Pages/Admin/Mitra/Add';
 import AddTestimony from './Pages/Admin/Testimoni/Add';
 import EditFAQ from './Pages/Admin/FAQ/Edit';
+import EditMitra from './Pages/Admin/Mitra/Edit';
+import EditTestimoni from './Pages/Admin/Testimoni/Edit';
 
 function App() {
   return (
@@ -39,7 +40,7 @@ function App() {
             {/* testimoni */}
             <Route path='/admin/testimoni'  />
             <Route path='/admin/testimoni/add' element={<AddTestimony/>}/>
-            <Route path='/admin/testimoni/:title/edit'  />
+            <Route path='/admin/testimoni/:title/edit' element={<EditTestimoni/>} />
             {/* faq */}
             <Route path='/admin/faq'  />
             <Route path='/admin/faq/add' element={<AddFAQ/>}/>
@@ -47,7 +48,7 @@ function App() {
             {/* mitra */}
             <Route path='/admin/mitra'  />
             <Route path='/admin/mitra/add'element={<AddMitra/>}/>
-            <Route path='/admin/mitra/:title/edit'  />
+            <Route path='/admin/mitra/:title/edit' element={<EditMitra />} />
           </Route>
           <Route element={<AuthRoute/>}>
             <Route path='/admin/login' element={<Login/>}/>
