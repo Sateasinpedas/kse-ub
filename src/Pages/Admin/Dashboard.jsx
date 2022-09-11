@@ -18,7 +18,7 @@ export default function AdminDashboard() {
             <div className="w-full flex justify-center flex-wrap">
                 <CardHelloAdmin1/>
                 <CardPaguyuban news={news} />
-                <CardMitra mitras={mitras} />
+                <CardMitra />
                 <CardTestimony testimonies={testimonies}/>
                 <CardFAQ/>
             </div>
