@@ -8,6 +8,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import Feedback from "../Components/Dashboard/Feedback";
 import Footer from "../Components/Footer";
+import { getDocs } from "firebase/firestore";
+import { kabarPaguyubanRef } from "../firebase/firebase";
 
 const testimonies = [
     {
@@ -44,6 +46,23 @@ const testimonies = [
 
 export default function Welcome() {
     const [swipeTo, setSwipeTo] = React.useState();
+    const [news, setNews] = React.useState([]);
+    const [isLoading, setIsLoading] = React.useState(false);
+
+    React.useEffect(() => {
+        setIsLoading(true);
+        getDocs(kabarPaguyubanRef)
+            .then(snapshot => {
+                snapshot.docs.forEach(doc => {
+                    setNews(prevState => [...prevState, { ...doc.data(), id: doc.id }])
+                })
+                setIsLoading(false);
+            })
+            .catch(err => {
+                console.log(err);
+                setIsLoading(false);
+            })
+    }, [])
 
     return (
         <div>
@@ -71,16 +90,16 @@ export default function Welcome() {
                 </div>
                 <div className="flex items-start mx-auto justify-center mt-10 md:flex-row flex-col" id="berita-terkini">
                     <NewsCard />
-                    <div className="bg-purple rounded-xl text-white p-10 pb-7 w-[80%] mx-auto md:mx-0 md:w-2/5 md:ml-5 mt-5 md:mt-0 font-semibold font-sans">
-                        <div className="mb-7">
-                            <Link to='/berita' className="hover:text-gray transition">Penerimaan beswan KSE th. ajaran 2022/2023</Link>
-                        </div>
-                        <div className="mb-7">
-                            <Link to='/berita' className="hover:text-gray transition">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, qui!</Link>
-                        </div>
-                        <div className="mb-7">
-                            <Link to='/berita' className="hover:text-gray transition">Lorem ipsum dolor sit amet consectetur.</Link>
-                        </div>
+                    <div className="bg-purple rounded-xl text-white p-10 pb-7 w-[80%] mx-auto md:mx-0 md:w-2/5 md:ml-5 mt-5 md:mt-0 font-semibold font-sans min-h-[250px]">
+                        {
+                            news.map((item, index) => {
+                                return (
+                                    <div className="mb-7" key={index}>
+                                        <Link to={`/berita/${item.id}`} className="hover:text-gray transition">{item.title}</Link>
+                                    </div>
+                                )
+                            })
+                        }
                     </div>
                 </div>
                 <div className="flex w-[80%] mx-auto mt-32 items-start md:flex-row flex-col">
@@ -109,7 +128,7 @@ export default function Welcome() {
                 </div>
                 <div className="md:w-[80%] w-[90%] mx-auto mt-32 flex md:flex-row flex-col sm:items-start items-center">
                     <div className="tentang md:w-[40%] md:ml-0 sm:text-left sm:ml-10 text-center">
-                        <h1 className="font-bold sm:text-3xl text-2xl mb-2">Apa Kata Para <br className="md:block hidden"/> Beswan KSE</h1>
+                        <h1 className="font-bold sm:text-3xl text-2xl mb-2">Apa Kata Para <br className="md:block hidden" /> Beswan KSE</h1>
                         <p className="md:mt-5 mt-2">Testimoni Beswan KSE UB</p>
                     </div>
                     <div className="tentang md:w-[60%] w-[90%] mx-auto md:mt-0 mt-10 mb-40">
@@ -123,7 +142,7 @@ export default function Welcome() {
                                 testimonies.map((testimony, index) => {
                                     return (
                                         <SwiperSlide key={index}>
-                                            <Feedback length={testimonies.length} testimony={testimony} swipeTo={swipeTo} id={index + 1}/>
+                                            <Feedback length={testimonies.length} testimony={testimony} swipeTo={swipeTo} id={index + 1} />
                                         </SwiperSlide>
                                     );
                                 })
@@ -132,7 +151,7 @@ export default function Welcome() {
 
                     </div>
                 </div>
-                <Footer/>
+                <Footer />
             </div>
         </div>
     );
