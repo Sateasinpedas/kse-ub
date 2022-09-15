@@ -18,6 +18,7 @@ import EditFAQ from './Pages/Admin/FAQ/Edit';
 import EditMitra from './Pages/Admin/Mitra/Edit';
 import EditTestimoni from './Pages/Admin/Testimoni/Edit';
 import ResetPassword from './Pages/Admin/ResetPassword/ResetPassword';
+import DetailBerita from './Pages/DetailBerita';
 
 function App() {
   return (
@@ -26,7 +27,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Dashboard />} />
           <Route path='/berita' element={<Berita/>}/>
-          <Route path='/berita/:name'  element={<ComingSoon/>} />
+          <Route path='/berita/:id'  element={<DetailBerita/>} />
           <Route path='/kontak'  element={<Kontak/>} />
           <Route path='/bts' element={<BehindTheScene/>}/>
           <Route path='/about' element={<ComingSoon/>}/>
@@ -37,19 +38,19 @@ function App() {
             {/* kabar paguyuban */}
             <Route path='/admin/kabar-paguyuban'  />
             <Route path='/admin/kabar-paguyuban/add' element={<AddKabarPaguyuban/>} />
-            <Route path='/admin/kabar-paguyuban/:title/edit' element={<EditKabarPaguyubnan/>} />
+            <Route path='/admin/kabar-paguyuban/:id/edit' element={<EditKabarPaguyubnan/>} />
             {/* testimoni */}
             <Route path='/admin/testimoni'  />
             <Route path='/admin/testimoni/add' element={<AddTestimony/>}/>
-            <Route path='/admin/testimoni/:title/edit' element={<EditTestimoni/>} />
+            <Route path='/admin/testimoni/:id/edit' element={<EditTestimoni/>} />
             {/* faq */}
             <Route path='/admin/faq'  />
             <Route path='/admin/faq/add' element={<AddFAQ/>}/>
-            <Route path='/admin/faq/:title/edit' element={<EditFAQ/>} />
+            <Route path='/admin/faq/:id/edit' element={<EditFAQ/>} />
             {/* mitra */}
             <Route path='/admin/mitra'  />
             <Route path='/admin/mitra/add'element={<AddMitra/>}/>
-            <Route path='/admin/mitra/:title/edit' element={<EditMitra />} />
+            <Route path='/admin/mitra/:id/edit' element={<EditMitra />} />
             {/* reset password */}
             <Route path='/admin/password-reset' element={<ResetPassword/>}/>
           </Route>

@@ -60,7 +60,7 @@ const marqueeSmallVariants = {
         x: 0
     },
     animate: {
-        x: [100, -800],
+        x: [100, -700],
         transition: {
             x: {
                 repeat: Infinity,
@@ -78,7 +78,7 @@ export default function PartnerContainer() {
     React.useEffect(() => {
         let newPartners = partners;
 
-        setDatas((prevState) => [...prevState, ...newPartners, ...newPartners, ...newPartners]);
+        setDatas((prevState) => [...prevState, ...newPartners, ...newPartners, ...newPartners, ...newPartners]);
     }, [])
 
     return (
