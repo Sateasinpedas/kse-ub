@@ -55,9 +55,10 @@ export default function Edit() {
     const editFaq = async () => {
         let items = {
             title: title || faq.title,
-            answer: answer || faq.answwer,
+            answer: answer || faq.answer,
+            id: id
         }
-        editItem(setIsLoading, id, items);
+        editItem(setIsLoading, items, "faqs", "success edit faq");
     }
 
     const handleSubmit = (e) => {

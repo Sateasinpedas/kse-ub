@@ -58,10 +58,10 @@ export default function Edit() {
             nama: nama || testimoni.nama,
             prodi: prodi || testimoni.prodi,
             image_link: imageLink || testimoni.image_link,
-            description: deskripsi,
+            description: deskripsi || testimoni.description,
             id: id
         }
-        editItem(setIsLoading, id, items);
+        editItem(setIsLoading, items, "testimonies", "success edit testimonies");
     }
 
     const handleSubmit = (e) => {

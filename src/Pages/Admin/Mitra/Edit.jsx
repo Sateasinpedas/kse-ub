@@ -2,8 +2,7 @@ import React from "react";
 import AdminLayout from "../../../Layout/AdminLayout";
 import InputAdmin from "../../../Components/Admin/Input/InputAdmin";
 import Button from "../../../Components/Admin/Button/Button";
-import { doc, updateDoc } from "firebase/firestore";
-import { db, mitraRef } from "../../../firebase/firebase";
+import { mitraRef } from "../../../firebase/firebase";
 import Swal from "sweetalert2";
 import { checkUser, editItem, getDatas } from "../../../firebase/request";
 import { deleteItem } from "../../../utils/ConfirmationDialog";
@@ -61,7 +60,7 @@ export default function Edit() {
             id: id
         };
 
-        editItem(setIsLoading, id, items);
+        editItem(setIsLoading, items, "mitras", "Success update mitra");
     }
 
     const handleSubmit = (e) => {

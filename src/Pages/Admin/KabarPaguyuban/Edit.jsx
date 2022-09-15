@@ -62,7 +62,7 @@ export default function Add() {
             description: richContent || news.description,
             id: id
         }
-        editItem(setIsLoading, id, items);
+        editItem(setIsLoading, items, "news", "success edit kabar paguyuban");
     }
 
     const handleSubmit = (e) => {
