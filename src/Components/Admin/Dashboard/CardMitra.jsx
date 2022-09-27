@@ -73,7 +73,7 @@ function Mitra({ mitra }) {
                 path={mitra.image_link}
                 width="100%"
             />
-            <a onClick={() => localStorage.setItem('mitra', JSON.stringify(mitra))} href={`/admin/mitra/${mitra.title}/edit`} ><p className='mt-4'>{mitra.title}</p></a>
+            <a onClick={() => localStorage.setItem('mitra', JSON.stringify(mitra))} href={`/admin/mitra/${mitra.id}/edit`} ><p className='mt-4'>{mitra.title}</p></a>
         </div>
     );
 }

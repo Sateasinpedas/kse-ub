@@ -58,7 +58,7 @@ export default function CardTestimony() {
                                             />
                                         </div>
                                         <div className="ml-2">
-                                            <a onClick={() => localStorage.setItem('testimoni', JSON.stringify(item))} href={`/admin/testimoni/${item.nama.replace("?", "")}/edit`}>
+                                            <a onClick={() => localStorage.setItem('testimoni', JSON.stringify(item))} href={`/admin/testimoni/${item.id}/edit`}>
                                                 <h4 className="text-slate-600 font-semibold mb-2">{item.nama}</h4>
                                             </a>
                                             <p className="text-slate-500 text-sm mb-5">{item.description.substring(0, 150)}...</p>

@@ -43,7 +43,7 @@ const marqueeMediumVariants = {
         y: 0
     },
     animate: {
-        y: [100, -800],
+        y: [200, -300],
         transition: {
             y: {
                 repeat: Infinity,
@@ -60,7 +60,7 @@ const marqueeSmallVariants = {
         x: 0
     },
     animate: {
-        x: [100, -800],
+        x: [-100, -1000],
         transition: {
             x: {
                 repeat: Infinity,
@@ -78,12 +78,12 @@ export default function PartnerContainer() {
     React.useEffect(() => {
         let newPartners = partners;
 
-        setDatas((prevState) => [...prevState, ...newPartners, ...newPartners, ...newPartners]);
+        setDatas((prevState) => [...prevState, ...newPartners, ...newPartners, ...newPartners, ...newPartners]);
     }, [])
 
     return (
         <div className="bg-orange rounded-xl p-8 flex lg:flex-row flex-col justify-between overflow-hidden items-center lg:h-[400px] shadow-2xl">
-            <div className="content lg:w-[55%] text-white">
+            <div className="content lg:w-[40%] text-white">
                 <h1 className="text-3xl font-bold mb-5">Mitra Donatur</h1>
                 <p className="text-justify">Yayasan Karya Salemba Empat (KSE) yang dimulai menberikan beasiswa kepada 3 orang mahasiswa di Tahun 1995 oleh para Founder saja. Seiring dengan perkembangan masa, dari Tahun ke Tahun KSE sejak diberdirikan sebagai Yayasan di Tahun 1998, KSE mulai diberikan support oleh para donatur baik itu koorporasi dan Individual selain para pengurus dan Founder KSE.</p>
             </div>

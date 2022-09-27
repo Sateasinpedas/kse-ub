@@ -52,10 +52,10 @@ export default function CardPaguyuban() {
                         }).map((item, index) => {
                             return (
                                 <div className="daftar-berita " key={index}>
-                                    <a onClick={() => localStorage.setItem('news', JSON.stringify(item))} href={`/admin/kabar-paguyuban/${item.title.replace("?", "")}/edit`}>
+                                    <a onClick={() => localStorage.setItem('news', JSON.stringify(item))} href={`/admin/kabar-paguyuban/${item.id}/edit`}>
                                         <h4 className="text-slate-600 font-semibold mb-2">{item.title}</h4>
                                     </a>
-                                    <p className="text-slate-500 text-sm mb-5">{item.description.substring(0, 50)}...</p>
+                                    <p className="text-slate-500 text-sm mb-5">Click item to view details</p>
                                 </div>
                             );
                         })

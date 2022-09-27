@@ -26,18 +26,11 @@ export default function FAQDropdown({ faq }) {
 }
 
 function DropDownContent({ isOpen, setIsOpen, faq }) {
-
-    const splitTitle = (str) => {
-        const replaceQuestionMark = str.replace("?", "");
-        const newStr = replaceQuestionMark.replace("%20", "-");
-        return newStr;
-    }
-
     return (
         <motion.div onClick={() => setIsOpen(!isOpen)} initial={{ height: 0 }} animate={{ height: 'auto' }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.2, ease: "easeOut" }} className="cursor-pointer p-3 rounded-b-lg shadow">
             <p>{faq.answer}</p>
             <div onClick={() => localStorage.setItem('faq', JSON.stringify(faq))} >
-                <Button href={`/admin/faq/${splitTitle(faq.title)}/edit`} endIcon={<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                <Button href={`/admin/faq/${faq.id}/edit`} endIcon={<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
                 </svg>
                 } className="bg-purple text-white mt-3">Visit</Button>
