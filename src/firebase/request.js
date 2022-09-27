@@ -29,15 +29,15 @@ const getDatas = (setIsLoading, setDatas, ref) => {
     })
 }
 
-const editItem = (setIsLoading, id, item ) => {
+const editItem = (setIsLoading, item, collection, successMessage ) => {
     setIsLoading(true);
-        updateDoc(doc(db, "news", id), item)
+        updateDoc(doc(db, collection, item.id), item)
             .then(() => {
                 setTimeout(() => {
                     Swal.fire({
                         position: 'top-end',
                         icon: 'success',
-                        title: 'Success update kabar paguyuban',
+                        title: successMessage,
                         showConfirmButton: false,
                         timer: 2000
                     })

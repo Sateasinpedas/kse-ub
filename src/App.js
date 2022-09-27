@@ -27,7 +27,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Dashboard />} />
           <Route path='/berita' element={<Berita/>}/>
-          <Route path='/berita/:id'  element={<DetailBerita/>} />
+          <Route path='/berita/:id'  element={<ComingSoon/>} />
           <Route path='/kontak'  element={<Kontak/>} />
           <Route path='/bts' element={<BehindTheScene/>}/>
           <Route path='/about' element={<ComingSoon/>}/>
